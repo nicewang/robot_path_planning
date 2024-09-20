@@ -1,1 +1,1 @@
-## Rapidly Exploring Random Tree
+## Rapidly Exploring Random Tree (RRT)

@@ -6,3 +6,4 @@
 *.so
 *.dylib
 *.dll
+**/build/
