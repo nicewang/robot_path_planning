@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <vector>
-#include <cmath>
+#include <cmath>  // for std::sqrt and std::log
+#include <limits> // for std::numeric_limits
 
 struct Point {
     double x, y;
