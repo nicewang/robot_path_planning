@@ -3,6 +3,8 @@
 
 #include "state.h"
 #include <unordered_set>
+#include <limits> // for std::numeric_limits
+#include <cmath>  // for std::sqrt and std::log
 
 #ifndef CONFIG_C
 #define CONFIG_C 2  

@@ -3,6 +3,7 @@ project(MyProject)
 
 # Set C++ 11 standard
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Add subdirectories and compile separately
 add_subdirectory(monte_carlo_tree_search)
