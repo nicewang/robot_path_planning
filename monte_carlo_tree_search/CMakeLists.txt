@@ -29,20 +29,33 @@ add_compile_definitions(
     CONFIG_C=${CONFIG_C}
 )
 
-# source
-set(SRC
-    src/main.cpp
-    src/mcts.cpp
-    src/state.cpp
+# Set dir of include, src and obj
+set(INCDIR ${CMAKE_SOURCE_DIR}/include)
+set(SRCDIR ${CMAKE_SOURCE_DIR}/src)
+set(OBJDIR ${CMAKE_BINARY_DIR}/obj)
+
+# Set obj files and src files
+set(SRCFILES ${CMAKE_CURRENT_LIST_DIR}/src/state.cpp ${CMAKE_CURRENT_LIST_DIR}/src/mcts.cpp ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp)
+set(OBJFILES ${OBJDIR}/mcts.o ${OBJDIR}/main.o)
+
+# Include Dir
+include_directories(${INCDIR})
+
+# Add an object library to control the generation of object files
+add_library(mcts_objects OBJECT ${SRCFILES})
+
+# Set the output directory to the obj folder
+set_target_properties(mcts_objects PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY ${OBJDIR}
+    LIBRARY_OUTPUT_DIRECTORY ${OBJDIR}
+    RUNTIME_OUTPUT_DIRECTORY ${OBJDIR}
 )
 
-# header
-include_directories(include)
-
 # executable file
-add_executable(mcts.so ${SRC})
+add_executable(mcts.so $<TARGET_OBJECTS:mcts_objects>)
 
 # clean
 add_custom_target(clean_mcts
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${OBJDIR}
     COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/mcts.so
 )
