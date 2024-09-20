@@ -7,7 +7,7 @@ bool State::is_terminal() const {
     return (x == GOAL_X && y == GOAL_Y);
 }
 
-double State::get_reward() const {
+double State::get_wins() const {
     return is_terminal() ? 1.0 : 0.0;
 }
 

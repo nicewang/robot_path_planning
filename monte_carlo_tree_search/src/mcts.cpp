@@ -21,8 +21,8 @@ MCTSNode* MCTS::search(const State& root_state, int iterations) {
 
     for (int i = 0; i < iterations; ++i) {
         MCTSNode* node = tree_policy(root);
-        double reward = simulate(node->state);
-        backpropagate(node, reward);
+        double wins = simulate(node->state);
+        backpropagate(node, wins);
     }
 
     // MCTSNode* best_node = root->select();
@@ -52,7 +52,7 @@ MCTSNode* MCTS::select(MCTSNode* node) const {
     double best_value = -std::numeric_limits<double>::infinity();
     MCTSNode* best_node = nullptr;
     for (MCTSNode* child : node->children) {
-        // double ucb1 = child->reward / child->visits + std::sqrt(2 * std::log(visits) / child->visits);
+        // double ucb1 = child->wins / child->visits + std::sqrt(2 * std::log(visits) / child->visits);
         double ucb1 = child->wins / child->visits + C * std::sqrt(std::log(root->visits) / child->visits);
         if (ucb1 > best_value) {
             best_value = ucb1;
@@ -85,13 +85,13 @@ double MCTS::simulate(const State& state) {
         current_state = current_state.perform_action(random_action);
         steps++;
     }
-    return current_state.get_reward();
+    return current_state.get_wins();
 }
 
-void MCTS::backpropagate(MCTSNode* node, double reward) {
+void MCTS::backpropagate(MCTSNode* node, double wins) {
     while (node != nullptr) {
         node->visits++;
-        node->wins += reward;
+        node->wins += wins;
         node = node->parent;
     }
 }

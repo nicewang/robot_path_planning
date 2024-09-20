@@ -10,7 +10,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -DCONFIG_GRID_SIZE=$(CONFIG_GRID_SIZE) -DCONFIG_GOAL_X=$(CONFIG_GOAL_X) -DCONFIG_GOAL_Y=$(CONFIG_GOAL_Y) -DCONFIG_MAX_SIM_STEPS=$(CONFIG_MAX_SIM_STEPS) -DCONFIG_C=$(CONFIG_C)
 
 # exe file name
-TARGET = mcts
+TARGET = mcts.so
 
 # source file
 SRC = src/main.cpp src/mcts.cpp src/state.cpp

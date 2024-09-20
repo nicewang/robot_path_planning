@@ -41,7 +41,7 @@ private:
     // 3: Simulation / Rollout
     double simulate(const State& state);
     // 4: Backpropagation
-    void backpropagate(MCTSNode* node, double reward);
+    void backpropagate(MCTSNode* node, double wins);
 };
 
 #endif  // MCTS_H

@@ -1,7 +1,7 @@
 #include "../include/mcts.h"
 
 int main() {
-    srand(static_cast<unsigned>(time(0)));  // 随机种子
+    srand(static_cast<unsigned>(time(0)));  // random seed
 
     State start_state(START_X, START_Y);
     MCTS mcts;

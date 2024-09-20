@@ -52,7 +52,7 @@ public:
 
     State(int x, int y);
     bool is_terminal() const;
-    double get_reward() const;
+    double get_wins() const;
     std::vector<Action> get_legal_actions() const;
     State perform_action(Action action) const;
     bool operator==(const State& other) const;
