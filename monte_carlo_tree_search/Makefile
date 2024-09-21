@@ -6,24 +6,32 @@ CONFIG_GOAL_Y = $(shell grep ^CONFIG_GOAL_Y $(CONFIG_FILE) | cut -d '=' -f2)
 CONFIG_MAX_SIM_STEPS = $(shell grep ^CONFIG_MAX_SIM_STEPS $(CONFIG_FILE) | cut -d '=' -f2)
 CONFIG_C = $(shell grep ^CONFIG_C $(CONFIG_FILE) | cut -d '=' -f2)
 
+# Compiler
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -DCONFIG_GRID_SIZE=$(CONFIG_GRID_SIZE) -DCONFIG_GOAL_X=$(CONFIG_GOAL_X) -DCONFIG_GOAL_Y=$(CONFIG_GOAL_Y) -DCONFIG_MAX_SIM_STEPS=$(CONFIG_MAX_SIM_STEPS) -DCONFIG_C=$(CONFIG_C)
 
-# exe file name
+# Directories
+INCDIR = include
+SRCDIR = src
+OBJDIR = obj
+
+# Files
+SRCFILES = $(SRCDIR)/state.cpp $(SRCDIR)/mcts.cpp $(SRCDIR)/main.cpp
+OBJFILES = $(OBJDIR)/state.o $(OBJDIR)/mcts.o $(OBJDIR)/main.o
 TARGET = mcts.so
 
-# source file
-SRC = src/main.cpp src/mcts.cpp src/state.cpp
+# Ensure the object directory exists and compile target
+$(TARGET): $(OBJFILES)
+	$(CXX) $(OBJFILES) -o $(TARGET)
 
-# header file
-HDR = include/mcts.h include/state.h
+# Create object directory if not exists and compile source files into objects
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -I$(INCDIR) -c $< -o $@
 
-# compile rules
-all: $(TARGET)
+# Create object directory
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
-$(TARGET): $(SRC) $(HDR)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
-
-# clear all out files
+# Clean up
 clean:
-	rm -f $(TARGET)
+	rm -rf $(OBJDIR) $(TARGET)
