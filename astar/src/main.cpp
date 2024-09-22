@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../include/astar.h"
 
 #ifndef CONFIG_WIDTH

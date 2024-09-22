@@ -1,8 +1,4 @@
 #include "../include/astar.h"
-#include <queue>
-#include <unordered_map>
-#include <cmath>
-#include <iostream>
 
 using namespace std;
 
