@@ -30,4 +30,6 @@ Clean:
 
 ```shell
 make clean
+cd ..
+rm -rf build/
 ```
