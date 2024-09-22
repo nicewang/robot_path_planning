@@ -61,7 +61,7 @@ vector<pair<int, int>> aStar(int startX, int startY, int goalX, int goalY, int w
 
             if (closedSet[neighborY][neighborX]) continue;
 
-            double tentative_g = current.g + 1; // 假设移动成本为1
+            double tentative_g = current.g + 1; // Assume the movement cost is 1
             Node neighborNode{neighborX, neighborY, 0, tentative_g, heuristic(neighborX, neighborY, goalX, goalY)};
 
             if (allNodes.find(neighborY * width + neighborX) == allNodes.end() || tentative_g < allNodes[neighborY * width + neighborX].g) {
@@ -71,7 +71,7 @@ vector<pair<int, int>> aStar(int startX, int startY, int goalX, int goalY, int w
             }
         }
 
-        // 打印当前优先队列中的节点
+        // Print the nodes in the current priority queue
         printOpenSet(openSet);
         cout << "-------------------------------" << endl;
     }
