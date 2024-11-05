@@ -6,20 +6,28 @@ bool Node::operator>(const Node& other) const {
     return f > other.f;
 }
 
-double heuristic(int x1, int y1, int x2, int y2) {
+double AStar::heuristic(int x1, int y1, int x2, int y2) {
     return abs(x1 - x2) + abs(y1 - y2); // Manhattan distance
 }
 
-vector<pair<int, int>> getNeighbors(int x, int y, int width, int height) {
+vector<pair<int, int>> AStar::getNeighbors(int x, int y, int width, int height) {
     vector<pair<int, int>> neighbors;
-    if (x > 0) neighbors.emplace_back(x - 1, y);
-    if (x < width - 1) neighbors.emplace_back(x + 1, y);
-    if (y > 0) neighbors.emplace_back(x, y - 1);
-    if (y < height - 1) neighbors.emplace_back(x, y + 1);
+    if (x > 0) {
+        neighbors.emplace_back(x - 1, y);
+    }
+    if (x < width - 1) {
+        neighbors.emplace_back(x + 1, y);
+    }
+    if (y > 0) {
+        neighbors.emplace_back(x, y - 1);
+    }
+    if (y < height - 1) {
+        neighbors.emplace_back(x, y + 1);
+    }
     return neighbors;
 }
 
-void printOpenSet(priority_queue<Node, vector<Node>, greater<Node>> openSet) {
+void AStar::printOpenSet(priority_queue<Node, vector<Node>, greater<Node>> openSet) {
     cout << "Open set (nodes in queue):" << endl;
     while (!openSet.empty()) {
         Node node = openSet.top();
@@ -28,7 +36,7 @@ void printOpenSet(priority_queue<Node, vector<Node>, greater<Node>> openSet) {
     }
 }
 
-vector<pair<int, int>> aStar(int startX, int startY, int goalX, int goalY, int width, int height) {
+vector<pair<int, int>> AStar::aStar(int startX, int startY, int goalX, int goalY, int width, int height) {
     priority_queue<Node, vector<Node>, greater<Node>> openSet;
     unordered_map<int, Node> allNodes;
     vector<vector<bool>> closedSet(height, vector<bool>(width, false));

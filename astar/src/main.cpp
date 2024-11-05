@@ -32,7 +32,8 @@ constexpr int GOAL_Y = CONFIG_GOAL_Y;
 
 int main() {
     int width = WIDTH, height = HEIGHT;
-    std::vector<std::pair<int, int>> path = aStar(START_X, START_Y, GOAL_X, GOAL_Y, width, height);
+    AStar* aStar = new AStar();
+    std::vector<std::pair<int, int>> path = aStar->aStar(START_X, START_Y, GOAL_X, GOAL_Y, width, height);
 
     if (!path.empty()) {
         std::cout << "Path found: ";
