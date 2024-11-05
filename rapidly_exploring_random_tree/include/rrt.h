@@ -6,13 +6,15 @@
 #include <cmath>  // for std::sqrt and std::log
 #include <limits> // for std::numeric_limits
 
-struct Point {
+class Point {
+public:
     double x, y;
     Point(double _x = 0, double _y = 0);
     double distance(const Point& other) const;
 };
 
-struct Node {
+class Node {
+public:
     Point point;
     Node* parent;
     Node(const Point& p, Node* par = nullptr);
