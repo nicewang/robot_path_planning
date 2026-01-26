@@ -6,7 +6,7 @@
 ### Appendix: Build & Run
 `CMakeList.txt` mainly for github workflows' building process.
 
-If you want to build manually using `CMakeList.txt`, use following commands:
+If you want to build manually using `CMakeLists.txt`, use following commands:
 
 ```shell
 # build
