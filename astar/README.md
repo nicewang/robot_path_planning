@@ -1,5 +1,5 @@
 ## AStar (A*)
-[Original Paper](paper/astar.pdf)
+[Original Paper](paper/)
 
 ### Appendix: Build & Run
 `CMakeList.txt` mainly for github workflows' building process.

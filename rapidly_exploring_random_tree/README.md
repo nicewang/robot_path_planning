@@ -1,5 +1,5 @@
 ## Rapidly Exploring Random Tree (RRT)
-[Original Paper](paper/Lav98c.pdf)
+[Original Paper](paper/)
 
 ### Appendix: Build & Run
 `CMakeList.txt` mainly for github workflows' building process.

@@ -1,6 +1,6 @@
 ## Monte Carlo Tree Search
 ### Background: Algorithm Framework
-[Original Paper](paper/CG2006.pdf)
+[Original Paper](paper/)
 
 Algorithm Main Steps:
 
