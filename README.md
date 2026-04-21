@@ -1,7 +1,7 @@
 ## Robot Path Planning
-* [Monte Carlo Tree Search](monte_carlo_tree_search/README.md)
-* [Rapidly Exploring Random Tree (RRT)](rapidly_exploring_random_tree/README.md)
-* [AStar (A*)](astar/README.md)
+* [Monte Carlo Tree Search](monte_carlo_tree_search/)
+* [Rapidly Exploring Random Tree (RRT)](rapidly_exploring_random_tree/)
+* [AStar (A*)](astar/)
 
 ### Appendix: Build & Run
 `CMakeList.txt` mainly for github workflows' building process.
